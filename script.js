@@ -1,9 +1,9 @@
 const SITE_LINKS = {
   socials: {
-    spotify: 'https://open.spotify.com/',
-    appleMusic: 'https://music.apple.com/',
-    bandcamp: 'https://bandcamp.com/',
-    instagram: 'https://instagram.com/',
+    spotify: 'https://open.spotify.com/album/1uCJZxHc8jsFuvQceOzF0v?si=W5bVzh_vSRScAEJGbwQGLw',
+    appleMusic: 'https://music.apple.com/us/album/lost-at-sea-single/1875448850',
+    bandcamp: 'https://band-gaggle.bandcamp.com/album/lost-at-sea',
+    instagram: 'https://www.instagram.com/gaggle_band/',
     tiktok: 'https://tiktok.com/',
     youtube: 'https://youtube.com/',
   },
