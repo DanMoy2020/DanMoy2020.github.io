@@ -4,7 +4,7 @@ const SITE_LINKS = {
     appleMusic: 'https://music.apple.com/us/album/lost-at-sea-single/1875448850',
     bandcamp: 'https://band-gaggle.bandcamp.com/album/lost-at-sea',
     instagram: 'https://www.instagram.com/gaggle_band/',
-    tiktok: 'https://www.tiktok.com/@gaggle_band',
+    tiktok: 'https://www.tiktok.com/@gaggleband',
     youtube: 'https://www.youtube.com/@gaggleband',
   },
   contactEmail: 'band.gaggle@proton.me',
