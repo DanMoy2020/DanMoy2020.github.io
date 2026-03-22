@@ -96,12 +96,6 @@ function initMenu() {
     link.addEventListener('click', closeMenu);
   });
 
-  document.addEventListener('click', (event) => {
-    if (!menu.contains(event.target) && !menuButton.contains(event.target)) {
-      closeMenu();
-    }
-  });
-
   document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       closeMenu();
