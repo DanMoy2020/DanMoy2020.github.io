@@ -210,8 +210,8 @@ function initEPKContactForm() {
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     await Promise.all([
-      injectPartial('#site-header', 'partials/header.html'),
-      injectPartial('#site-footer', 'partials/footer.html'),
+      injectPartial('#site-header', '/partials/header.html'),
+      injectPartial('#site-footer', '/partials/footer.html'),
     ]);
   } catch (error) {
     console.error(error);
