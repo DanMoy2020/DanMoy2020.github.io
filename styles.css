@@ -310,6 +310,11 @@ h2 {
   text-underline-offset: 3px;
 }
 
+.maps-link {
+  color: #ffffff;
+  text-underline-offset: 3px;
+}
+
 .member-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
