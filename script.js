@@ -114,6 +114,33 @@ function initMenu() {
   syncMenuSpace();
 }
 
+function applyEventDateFiltering() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  document.querySelectorAll('.event-item[data-date]').forEach((eventItem) => {
+    const dateValue = eventItem.dataset.date;
+    if (!dateValue) {
+      return;
+    }
+
+    const [year, month, day] = dateValue.split('-').map(Number);
+    if ([year, month, day].some((n) => Number.isNaN(n))) {
+      console.warn('Invalid event date', dateValue, eventItem);
+      return;
+    }
+
+    const eventDate = new Date(year, month - 1, day);
+    eventDate.setHours(0, 0, 0, 0);
+
+    if (eventDate < today) {
+      eventItem.style.display = 'none';
+    } else {
+      eventItem.style.display = '';
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     await Promise.all([
@@ -128,4 +155,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   applySharedUrls();
   setActiveMenuLink();
   initMenu();
+  applyEventDateFiltering();
 });
