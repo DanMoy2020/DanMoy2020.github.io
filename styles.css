@@ -528,3 +528,21 @@ h2 {
     margin: 0 auto;
   }
 }
+
+@media (max-width: 1000px) {
+  .epk-about {
+    grid-template-columns: 1fr;
+  }
+
+  .epk-about-left {
+    order: 2;
+  }
+
+  .epk-about-left img {
+    height: 300px;
+  }
+
+  .epk-about-right {
+    order: 1;
+  }
+}
