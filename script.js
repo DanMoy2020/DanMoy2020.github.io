@@ -141,6 +141,72 @@ function applyEventDateFiltering() {
   });
 }
 
+function setupEPKPage() {
+  // only run on EPK page
+  if (!document.body.dataset.page || document.body.dataset.page !== 'epk') {
+    return;
+  }
+
+  initEPKCarousel();
+  initEPKContactForm();
+}
+
+function initEPKCarousel() {
+  const carousel = document.querySelector('.epk-photos .carousel-track');
+  if (!carousel) {
+    return;
+  }
+
+  const slides = Array.from(carousel.children);
+  const prev = document.querySelector('.carousel-prev');
+  const next = document.querySelector('.carousel-next');
+  let index = 0;
+
+  function refresh() {
+    const slideWidth = slides[0]?.getBoundingClientRect().width || 0;
+    carousel.style.transform = `translateX(${-index * (slideWidth + 11)}px)`;
+  }
+
+  function setIndex(nextIndex) {
+    index = ((nextIndex % slides.length) + slides.length) % slides.length;
+    refresh();
+  }
+
+  prev?.addEventListener('click', () => setIndex(index - 1));
+  next?.addEventListener('click', () => setIndex(index + 1));
+  window.addEventListener('resize', refresh);
+  setIndex(0);
+}
+
+function initEPKContactForm() {
+  const form = document.getElementById('epk-contact-form');
+  const status = document.getElementById('epk-contact-status');
+  if (!form || !status) {
+    return;
+  }
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById('epk-name').value.trim();
+    const email = document.getElementById('epk-email').value.trim();
+    const message = document.getElementById('epk-message').value.trim();
+    const recipient = SITE_LINKS.contactEmail || 'band.gaggle@proton.me';
+
+    if (!name || !email || !message) {
+      status.textContent = 'Please complete all fields before sending.';
+      return;
+    }
+
+    const subject = encodeURIComponent(`EPK contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+    const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+    status.textContent = 'Opening your email app…';
+    window.location.href = mailtoUrl;
+  });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
     await Promise.all([
@@ -156,4 +222,5 @@ document.addEventListener('DOMContentLoaded', async () => {
   setActiveMenuLink();
   initMenu();
   applyEventDateFiltering();
+  setupEPKPage();
 });
