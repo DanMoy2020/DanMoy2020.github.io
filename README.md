@@ -8,4 +8,6 @@ python -m http.server 8000
 
 and go to localhost here
 
-http://localhost:8000/index.html
+http://localhost:8000/
+
+want to add pitch letters for labels
